@@ -1,15 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// src/services/Firebase.js
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+
 const firebaseConfig = {
   apiKey: "AIzaSyCf3qFVtecLVc3IgTA4T_CoYLExVYFQ--g",
   authDomain: "oval-tv-72403.firebaseapp.com",
-  databaseURL: "https://oval-tv-72403-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "oval-tv-72403",
   storageBucket: "oval-tv-72403.appspot.com",
   messagingSenderId: "185929904872",
@@ -19,4 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
+
+// Export auth
+export { auth };
