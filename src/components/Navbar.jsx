@@ -18,13 +18,13 @@ import { auth } from "../services/Firebase"; // Ensure this is correctly exporte
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null); // Initialize user state to null
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(!!user);
+      setUser(user); // Update user state with the user object
       setLoading(false);
     });
 
