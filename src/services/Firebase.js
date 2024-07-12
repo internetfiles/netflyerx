@@ -1,28 +1,22 @@
-import { getAnalytics } from "firebase/analytics";
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-const API_KEY = import.meta.env.VITE_FIREBASE_API_KEY;
-const authDomain = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN;
-const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
-const storageBucket = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET;
-const messagingSenderId = import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID;
-const APP_ID = import.meta.env.VITE_FIREBASE_APP_ID;
-const measurementId = import.meta.env.VITE_FIREBASE_MEASUREMENT_ID;
-
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: authDomain,
-  projectId: projectId,
-  storageBucket: storageBucket,
-  messagingSenderId: messagingSenderId,
-  appId: APP_ID,
-  measurementId: measurementId,
+  apiKey: "AIzaSyCf3qFVtecLVc3IgTA4T_CoYLExVYFQ--g",
+  authDomain: "oval-tv-72403.firebaseapp.com",
+  databaseURL: "https://oval-tv-72403-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "oval-tv-72403",
+  storageBucket: "oval-tv-72403.appspot.com",
+  messagingSenderId: "185929904872",
+  appId: "1:185929904872:web:1b6c36b9903c0e66f10f5d",
+  measurementId: "G-57KX0158SV"
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
