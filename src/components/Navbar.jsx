@@ -1,4 +1,3 @@
-import { auth } from "../services/Firebase";
 import {
   Button,
   Navbar,
@@ -15,6 +14,7 @@ import { FiEye, FiList, FiSearch } from "react-icons/fi";
 import { MdQuestionMark } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { createToast } from "vercel-toast";
+import { auth } from "../services/Firebase"; // Ensure this is correctly exported from Firebase.js
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,26 +23,22 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(true);
-        setLoading(false);
-      } else {
-        setUser(false);
-        setLoading(false);
-      }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(!!user);
+      setLoading(false);
     });
+
+    return () => unsubscribe();
   }, []);
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(error.message);
-      });
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
   };
 
   const handleWatchlist = () => {
